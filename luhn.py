@@ -1,12 +1,14 @@
-#credit card verifier
+#credit card cinstr_sumerifier
 
 i = 1
+n = 0
 testarr_second_int = []
 c = []
+f = []
 
 #a = [int(i) for i in range(0,10)]
 
-test = 79927398713
+test = 7992738713
 
 testarr = [int(x) for x in str(test)]
 
@@ -16,38 +18,39 @@ while i != len(str(test)) or i != len(str(test)) + 1:
         i += 2
     except IndexError:
         break
+while n != len(str(test)) or n != len(str(test)) + 1:
+    try:
+        f.append(testarr[n])
+        n += 2
+    except IndexError:
+        break
     
 for i in testarr_second_int:
     c.append(i*2)
     i+=1
 
+#c to str and then sum
+
 cinstr = ''.join(map(str, c))
 
 cinstr_sum = sum(map(int, cinstr))
 
-m = [k for k in testarr if k not in c]
+#m = [k for k in testarr if k not in testarr_second_int]
 
-minstr = ''.join(map(str, m))
+#f to str and then sum
 
-minstr_sum = sum(map(int, minstr))
+finstr = ''.join(map(str, f))
+
+finstr_sum = sum(map(int, finstr))
+
+print('finstr_sum + cinstr_sum =', finstr_sum + cinstr_sum)
+
+def isValidCredit():
+    if (finstr_sum + cinstr_sum) % 10 == 0:
+        print('Yes')
+    else:
+        print('No')
 
 
-print('c =', c)
-print('cinstr =', cinstr)
-print('cinstr_sum =', cinstr_sum)
-print('type of cinstr =', type(cinstr))
-
-print('''
-=================================
-
-=================================
-
-=================================
-''')
-
-print('testarr =', testarr)
-print('      m =', m)
-print('testarr_second_int =', testarr_second_int)
-
-print(minstr_sum + cinstr_sum)
+isValidCredit()
 
