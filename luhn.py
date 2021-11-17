@@ -1,9 +1,8 @@
-#credit card verifier
+#credit card cinstr_sumerifier
 
 i = 1
-b = []
+testarr_second_int = []
 c = []
-d = []
 
 #a = [int(i) for i in range(0,10)]
 
@@ -13,35 +12,42 @@ testarr = [int(x) for x in str(test)]
 
 while i != len(str(test)) or i != len(str(test)) + 1:
     try:
-        b.append(testarr[i])
+        testarr_second_int.append(testarr[i])
         i += 2
     except IndexError:
         break
     
-for i in b:
+for i in testarr_second_int:
     c.append(i*2)
     i+=1
 
-'''
-first, you bring all the >1   numbers in one list by the while loop.
-then you convert the list to a string by ''.join(map()) func{say y}; also
-make a list of the left numbers {say g} in the variable c. then separate
-every thing from y and create a list of that. then g + y. done. good job. 
-'''
+cinstr = ''.join(map(str, c))
 
-cisstr = ''.join(map(str, c))
+cinstr_sum = sum(map(int, cinstr))
 
-print(cisstr)
+m = [k for k in testarr if k not in c]
 
-w = 0
+minstr = ''.join(map(str, m))
 
-while w < len(cisstr):
-    if len(''.join(map(str, c[w]))):
-        d.append(c[w])
-        print(d)
-        w+=1
-    else:
-        continue
+minstr_sum = sum(map(int, minstr))
 
-#print('c =', c)
-#print('d =', d)
+
+print('c =', c)
+print('cinstr =', cinstr)
+print('cinstr_sum =', cinstr_sum)
+print('type of cinstr =', type(cinstr))
+
+print('''
+=================================
+
+=================================
+
+=================================
+''')
+
+print('testarr =', testarr)
+print('      m =', m)
+print('testarr_second_int =', testarr_second_int)
+
+print(minstr_sum + cinstr_sum)
+
