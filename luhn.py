@@ -1,4 +1,4 @@
-#credit card cinstr_sumerifier
+#credit card verifier
 
 i = 1
 testarr_second_int = []
