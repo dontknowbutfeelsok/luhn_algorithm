@@ -1,56 +1,58 @@
-#credit card cinstr_sumerifier
+#credit card verifier
 
-i = 1
-n = 0
-testarr_second_int = []
-c = []
-f = []
 
-#a = [int(i) for i in range(0,10)]
 
-test = 7992738713
+def isValidCredit(test):
 
-testarr = [int(x) for x in str(test)]
+    i = 1
+    n = 0
+    testarr_second_int = []
+    c = []
+    f = []
 
-while i != len(str(test)) or i != len(str(test)) + 1:
-    try:
-        testarr_second_int.append(testarr[i])
-        i += 2
-    except IndexError:
-        break
-while n != len(str(test)) or n != len(str(test)) + 1:
-    try:
-        f.append(testarr[n])
-        n += 2
-    except IndexError:
-        break
-    
-for i in testarr_second_int:
-    c.append(i*2)
-    i+=1
+    #a = [int(i) for i in range(0,10)]
 
-#c to str and then sum
+    testarr = [int(x) for x in str(test)]
 
-cinstr = ''.join(map(str, c))
+    while i != len(str(test)) or i != len(str(test)) + 1:
+        try:
+            testarr_second_int.append(testarr[i])
+            i += 2
+        except IndexError:
+            break
+    while n != len(str(test)) or n != len(str(test)) + 1:
+        try:
+            f.append(testarr[n])
+            n += 2
+        except IndexError:
+            break
 
-cinstr_sum = sum(map(int, cinstr))
+    for i in testarr_second_int:
+        c.append(i*2)
+        i+=1
 
-#m = [k for k in testarr if k not in testarr_second_int]
+    #c to str and then sum
 
-#f to str and then sum
+    cinstr = ''.join(map(str, c))
 
-finstr = ''.join(map(str, f))
+    cinstr_sum = sum(map(int, cinstr))
 
-finstr_sum = sum(map(int, finstr))
+    #m = [k for k in testarr if k not in testarr_second_int]
 
-print('finstr_sum + cinstr_sum =', finstr_sum + cinstr_sum)
+    #f to str and then sum
 
-def isValidCredit():
+    finstr = ''.join(map(str, f))
+
+    finstr_sum = sum(map(int, finstr))
+
+    print('finstr_sum + cinstr_sum =', finstr_sum + cinstr_sum)
+
+
     if (finstr_sum + cinstr_sum) % 10 == 0:
         print('Yes')
     else:
         print('No')
 
-
-isValidCredit()
+l = int(input('type numbers here: '))
+isValidCredit(l)
 
