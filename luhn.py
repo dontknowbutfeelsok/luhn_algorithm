@@ -1,23 +1,14 @@
 #credit card verifier
 import random
+import time
+
 
 a = [int(i) for i in range(0,10)]
 creditcardno = []
 
-raw_i = 0
-while raw_i < 16:
-    creditcardno.append(random.choices(a))    
-    raw_i+=1
+boolean = False
 
-#it creates a flatten list out of a list of lists
-creditcardno_flatlist = sum(creditcardno, [])
-
-#converts list to int
-creditcardno_real = map(int, creditcardno_flatlist)
-
-
-
-def isValidCredit(creditcardno_real):
+def isValidCredit(number):
 
     i = 1
     n = 0
@@ -25,16 +16,16 @@ def isValidCredit(creditcardno_real):
     c = []
     f = []    
 
-    testarr = [int(x) for x in str(creditcardno_real)]
+    testarr = [int(x) for x in str(number)]
 
-    while i != len(str(creditcardno_real)) or i != len(str(creditcardno_real)) + 1:
+    while i != len(str(number)) or i != len(str(number)) + 1:
         try:
             testarr_second_int.append(testarr[i])
             i += 2
         except IndexError:
             break
 
-    while n != len(str(creditcardno_real)) or n != len(str(creditcardno_real)) + 1:
+    while n != len(str(number)) or n != len(str(number)) + 1:
         try:
             f.append(testarr[n])
             n += 2
@@ -59,18 +50,26 @@ def isValidCredit(creditcardno_real):
 
     finstr_sum = sum(map(int, finstr))
 
-    print('finstr_sum + cinstr_sum =', finstr_sum + cinstr_sum)
+    whole_sum = finstr_sum + cinstr_sum
 
-
-    if (finstr_sum + cinstr_sum) % 10 == 0:
-        print('Yes')
+    if whole_sum % 10 == 0:
+        boolean = True
     else:
-        print('No')
+        boolean = False
 
-inputcard = int(input('type numbers here: '))
-isValidCredit(inputcard)
+while boolean == False:
+    raw_i = 0
+    while raw_i < 16:
+        creditcardno.append(random.choices(a))    
+        raw_i+=1
+    #it creates a flatten list out of a list of lists
+    creditcardno_flatlist = sum(creditcardno, [])
 
-print(a)
-print(creditcardno)
-print(creditcardno_flatlist)
-print(creditcardno_real)
+    #converts list to int
+    creditcardno_real = int(''.join(map(str, creditcardno_flatlist)))
+
+    print(creditcardno_real, '\n')
+
+    time.sleep(0.2)
+
+    isValidCredit(creditcardno_real)
