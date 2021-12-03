@@ -72,8 +72,8 @@ while True:
 
     print('checking', int(creditcard))
 
-    if isValid.isValidCredit(creditcard) == True:
-        print('Your credit card numbers is valid.\n')
+    if isValidCredit(creditcard) == True:
+        print('Credit card number is valid.\n')
         break
     else:
         print('No. is Invalid.\n')
