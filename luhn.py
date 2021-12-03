@@ -1,30 +1,32 @@
 #credit card verifier/generator
-import random
-import time
+from random import choices
+from time import sleep
 import isValid
 
 a = [int(i) for i in range(0,10)]
 creditcardno = []
 
-while isValid.boolean == False:
+while True:
+
+    creditcardno.clear()
+    
     raw_i = 0
     while raw_i < 16:
-        creditcardno.append(random.choices(a))    
+        creditcardno.append(choices(a))    
         raw_i+=1
-    if len(creditcardno) > 16:
-        creditcardno.clear()
+
     #it creates a flatten list out of a list of lists
     creditcardno_flatlist = sum(creditcardno, [])
 
-    #converts list to int
+    #converts list to str
     creditcard = ''.join(map(str, creditcardno_flatlist))
 
-    creditcard.strip()
+    print('checking', int(creditcard))
 
-    print(creditcardno_flatlist)
-
-    print('checking ', creditcard, '\n')
-
-    time.sleep(0.2)
-
-    isValidCredit(int(creditcard))
+    if isValid.isValidCredit(creditcard) == True:
+        print('Your credit card numbers is valid.\n')
+        break
+    else:
+        print('No. is Invalid.\n')
+        sleep(0.1)
+        continue
