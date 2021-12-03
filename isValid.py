@@ -1,5 +1,3 @@
-boolean = False
-
 def isValidCredit(number):
 
     i = 1
@@ -45,6 +43,6 @@ def isValidCredit(number):
     whole_sum = finstr_sum + cinstr_sum
 
     if whole_sum % 10 == 0:
-        boolean = True
+        return True
     else:
-        boolean = False
+        return False
